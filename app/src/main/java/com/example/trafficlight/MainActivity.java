@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     private LinearLayout b_1, b_2, b_3;
-    private boolean start_stop = true;
+    private boolean start_stop = false;
     private Button button_1;
     private int counter = 0;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if (!start_stop){
             button_1.setText("Stop");
             start_stop = true;
-        }
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,11 +60,16 @@ public class MainActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                }
 
 
                 }
-            }
+
         }).start();
+        }else{
+            start_stop = false;
+            button_1.setText("Start");
+        }
 
 
 
